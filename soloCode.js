@@ -159,7 +159,7 @@ const isThisAnEmail = function (string) {
 
 console.log(isThisAnEmail("btrearty"));
 console.log(isThisAnEmail("btrearty@gmail.com"));
-console.log(isThisAnEmail("sdffahui@."));
+console.log(isThisAnEmail("sdffahui@.")); //Not great
 
 /* Ex.7
    Write a function called "whatDayIsIt" that should return the current day of the week.
@@ -222,7 +222,7 @@ console.log(rollTheDices(3));
 /* Ex.9
    Write a function called "howManyDays" which receives a date as a parameter and should return the number of days passed since that date.
 */
-//Wrote this at the weekend for last weeks extra exercises
+//Wrote this code at the weekend for last weeks extra exercise 20, daysPassed
 
 newExercise("9");
 // const today = new Date();
@@ -655,6 +655,66 @@ console.log(removeIndex(10));
   ***
 */
 
+newExercise(21);
+
+// const halfTree = function (n) {
+//   for (let i = 1; i < n; i++) {
+//     console.log("*");
+//   }
+//   for (let j = i; j <= 2 * i - 1; j++) {
+//     console.log("*");
+//   }
+//   return "Done";
+// };
+
+// halfTree(5);
+
+// const halfTree = function (n) {
+// let treeArray = [];
+// let branch = "*";
+
+// const addBranch = function (n) {
+//   for (let i = 1; i <= n; i++) {
+//     treeArray.push(branch);
+//   }
+//   console.log(treeArray.join(""));
+// };
+
+// const halfTree = function (n) {
+//   for (let i = 1; i <= n; i++) {
+//     addBranch(i);
+//   }
+// };
+
+//
+// };
+
+// let thatArray = ["*"];
+// let thatArray2 = ["*", "*"];
+// let thatString = thatArray.join("");
+// let thatString2 = thatArray2.join("");
+// console.log(thatString);
+// console.log(thatString2);
+
+// console.log(halfTree(5));
+
+// halfTree(3);
+
+const halfTree = function (n) {
+  let branch = "*";
+  // let treeArray = [];
+
+  for (let i = 0; i < n; i++) {
+    let treeArray = [];
+    for (let j = 0; j <= i; j++) {
+      treeArray.push(branch);
+    }
+    console.log(treeArray.join(""));
+  }
+};
+
+halfTree(7);
+
 /* Ex.22 
   Create a function called "tree" which receives a number as a parameter and builds an "*" tree with the given height.
   Example: 
@@ -664,6 +724,77 @@ console.log(removeIndex(10));
   *****
 */
 
+newExercise(22);
+
+// let addBranch = function (string, numberOfrows) {
+//   string.concat("*");
+// };
+
+const fullTree = function (n) {
+  let branch = "*";
+  let space = " ";
+  // let treeArray = [];
+
+  for (let i = 1; i <= n; i++) {
+    let treeArray = [];
+
+    // for (let i = n / 2; i >= 1; i--) {
+    //   treeArray.push(space);
+    // }
+
+    for (let j = 1; j <= i * 2 - 1; j++) {
+      treeArray.push(branch);
+    }
+    console.log(treeArray.join("").padStart(n * 3 - i, " "));
+  }
+};
+
+fullTree(7);
+//Cant get end tree in right line.
+//Should probably make it a string and concat, instead of an array
+
+// const fullTree = function (n) {
+//   let branch = "*";
+//   let space = " ";
+//   // let treeArray = [];
+
+//   for (let i = 1; i <= n; i++) {
+//     let treeString = "";
+
+//     // for (let i = n / 2; i >= 1; i--) {
+//     //   treeString.concat(space);
+//     // }
+
+//     for (let j = 1; j <= i * 2 - 1; j++) {
+//       treeString.concat(branch);
+//     }
+//     console.log(treeString);
+//   }
+// };
+
 /* Ex.23
   Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
 */
+
+newExercise(23);
+
+const isItPrime = function (n) {
+  if (n === 2) return true;
+  if (n > 2) {
+    for (let i = 2; i < n; i++) {
+      if (n % i === 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  } else {
+    return false;
+  }
+};
+
+console.log(isItPrime(2));
+console.log(isItPrime(3));
+console.log(isItPrime(4));
+console.log(isItPrime(5));
+console.log(isItPrime(17));
