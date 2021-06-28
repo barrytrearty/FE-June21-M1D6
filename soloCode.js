@@ -617,19 +617,35 @@ console.log(searchByTitle("Lord of the Flies"));
 
 newExercise("19");
 
+// const searchAndDivide = function (string) {
+//   let dividedObject = { match: [], unmatch: [] };
+//   for (let i = 0; i < movies.length; i++) {
+//     if (movies[i]["Title"].includes(string)) {
+//       dividedObject["match"].push(movies[i]["Title"]);
+//     } else {
+//       dividedObject["unmatch"].push(movies[i]["Title"]);
+//     }
+//   }
+//   return dividedObject;
+// };
+
+//Using search by title
 const searchAndDivide = function (string) {
   let dividedObject = { match: [], unmatch: [] };
+
   for (let i = 0; i < movies.length; i++) {
-    if (movies[i]["Title"].includes(string)) {
-      dividedObject["match"].push(movies[i]["Title"]);
+    if (searchByTitle(string).includes(movies[i])) {
+      dividedObject.match.push(movies[i]["Title"]);
     } else {
-      dividedObject["unmatch"].push(movies[i]["Title"]);
+      dividedObject.unmatch.push(movies[i]["Title"]);
     }
   }
   return dividedObject;
 };
 
 console.log(searchAndDivide("Avengers"));
+
+//Use searchByTitle inside by searchAndDivide
 
 /* Ex.20
    Write a function called "removeIndex" which receives a number as a parameter and returns the movies array without the element in the given position.
