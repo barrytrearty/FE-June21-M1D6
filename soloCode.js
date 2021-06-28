@@ -80,31 +80,119 @@ console.log(me);
     Write a function called "dice"; it should randomize an integer number between 1 and 6.
 */
 
+newExercise("1");
+const dice = function () {
+  return Math.floor(Math.random() * 6) + 1;
+};
+console.log(dice());
+
 /* Ex.2 
     Write a function called "whoIsBigger" which receives 2 numbers as parameters and returns the biggest one.
 */
+
+newExercise("2");
+const whoIsBigger = function (n1, n2) {
+  result = n2 > n1 ? n2 : n1;
+  return result;
+};
+console.log(whoIsBigger(26, 25));
 
 /* Ex.3
     Write a function called "splitMe" which receives a string as a parameter and returns an array with every word in that string.
     Ex. splitMe("I love coding") => returns ["I", "Love", "Coding"]
 */
 
+newExercise("3");
+
+const splitMe = function (string) {
+  return string.split(" ");
+};
+console.log(splitMe("Howdy, De Doodely Neighbour"));
+
 /* Ex.4
     Write a function called "deleteOne" which receives a string and a boolean as parameters. If the boolean value is true it should return the string without the first letter, otherwise it should remove the last one from it.
 */
+newExercise("4");
+
+const deleteOne = function (string, boolean) {
+  if (boolean) {
+    return string.slice(1);
+  } else {
+    return string.slice(0, -1);
+  }
+};
+
+console.log(deleteOne("CHello world", true));
+console.log(deleteOne("Hello worldC", false));
 
 /* Ex.5
    Write a function called "onlyLetters" which receives a string as a parameter and returns it removing all the digits.
    Ex.: onlyLetters("I have 4 dogs")  => returns "I have  dogs"
 */
+newExercise("5");
+
+const onlyLetters = function (string) {
+  let stringArray = string.split("");
+  let finalStringArray = [];
+
+  for (let i = 0; i < stringArray.length; i++) {
+    let letter = Number(stringArray[i]);
+    if (isNaN(letter)) finalStringArray.push(stringArray[i]);
+  }
+  return finalStringArray.join("");
+};
+
+console.log(onlyLetters("Heelll3oooo World44332E"));
 
 /* Ex.6 
    Write a function called "isThisAnEmail" which receives a string as a parameter and returns true if the string is a valid email address.
 */
+newExercise("6");
+
+const isThisAnEmail = function (string) {
+  if (string.includes("@") && string.includes(".com")) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+console.log(isThisAnEmail("btrearty"));
+console.log(isThisAnEmail("btrearty@gmail.com"));
+console.log(isThisAnEmail("sdffahui@."));
 
 /* Ex.7
    Write a function called "whatDayIsIt" that should return the current day of the week.
 */
+newExercise("7");
+
+const today = new Date();
+const whatDayIsIt = function () {
+  let dayOfTheWeek = today.getDay();
+  if (dayOfTheWeek == 0) {
+    return "Sunday";
+  }
+  if (dayOfTheWeek == 1) {
+    return "Monday";
+  }
+  if (dayOfTheWeek == 2) {
+    return "Tuesday";
+  }
+  if (dayOfTheWeek == 3) {
+    return "Wednesday";
+  }
+  if (dayOfTheWeek == 4) {
+    return "Thursday";
+  }
+  if (dayOfTheWeek == 5) {
+    return "Friday";
+  }
+  if (dayOfTheWeek == 6) {
+    return "Saturday";
+  }
+};
+
+console.log(whatDayIsIt());
 
 /* Ex.8
     Write a function called "rollTheDices" which receives a number as a parameter.
@@ -116,14 +204,161 @@ console.log(me);
         values: [3, 3, 4]
     }
 */
+newExercise("8");
+
+const rollTheDices = function (n) {
+  let diceObject = { sum: 0, values: [] };
+  let diceRoll;
+  for (i = 0; i < n; i++) {
+    diceRoll = dice();
+    diceObject.sum += diceRoll;
+    diceObject.values.push(diceRoll);
+  }
+  return diceObject;
+};
+
+console.log(rollTheDices(3));
 
 /* Ex.9
    Write a function called "howManyDays" which receives a date as a parameter and should return the number of days passed since that date.
 */
+//Wrote this at the weekend for last weeks extra exercises
+
+newExercise("9");
+// const today = new Date();
+const todayDateArray = [
+  today.getDate(),
+  today.getMonth() + 1,
+  today.getFullYear(),
+];
+
+const howManyDays = function (date) {
+  // Create array
+  let dateArray = [];
+  if (date.includes("-")) {
+    dateArray = date.split("-").map(Number);
+  }
+  if (date.includes(".")) {
+    dateArray = date.split(".").map(Number);
+  }
+  if (date.includes("/")) {
+    dateArray = date.split("/").map(Number);
+  }
+
+  // Position of day in the year function
+  const getDayoftheYear = function (array) {
+    let dayOfTheYear;
+    if (array[1] == 1) {
+      dayOfTheYear = array[0];
+    }
+    if (array[1] == 2) {
+      dayOfTheYear = array[0] + 31;
+    }
+    if (array[1] == 3) {
+      dayOfTheYear = array[0] + 59;
+    }
+    if (array[1] == 4) {
+      dayOfTheYear = array[0] + 90;
+    }
+    if (array[1] == 5) {
+      dayOfTheYear = array[0] + 120;
+    }
+    if (array[1] == 6) {
+      dayOfTheYear = array[0] + 151;
+    }
+    if (array[1] == 7) {
+      dayOfTheYear = array[0] + 181;
+    }
+    if (array[1] == 8) {
+      dayOfTheYear = array[0] + 212;
+    }
+    if (array[1] == 9) {
+      dayOfTheYear = array[0] + 243;
+    }
+    if (array[1] == 10) {
+      dayOfTheYear = array[0] + 273;
+    }
+    if (array[1] == 11) {
+      dayOfTheYear = array[0] + 304;
+    }
+    if (array[1] == 12) {
+      dayOfTheYear = array[0] + 334;
+    }
+    return dayOfTheYear;
+  };
+
+  // function to add leap days
+  const addLeapYearsForWholeYears = function (days, array1, array2) {
+    let year1 = array1[2] + 1;
+    let year2 = array2[2];
+    for (i = year1; i < year2; i++) {
+      if ((i % 4 == 0 && i % 100 != 0) || i % 400 == 0) {
+        days++;
+      }
+    }
+    return days;
+  };
+
+  const addLeapYearsForNotWholeYears = function (days, array1, array2) {
+    let earliestYear = array1[2];
+    let latestYear = array2[2];
+    let earliestYearDay = getDayoftheYear(array1);
+    let latestYearDay = getDayoftheYear(array2);
+    let marchFirst = getDayoftheYear([1, 3]);
+    if (
+      ((earliestYear % 4 == 0 && earliestYear % 100 != 0) ||
+        earliestYear % 400 == 0) &&
+      earliestYearDay < marchFirst
+    ) {
+      days++;
+    }
+    if (
+      ((latestYear % 4 == 0 && latestYear % 100 != 0) ||
+        latestYear % 400 == 0) &&
+      latestYearDay >= marchFirst
+    ) {
+      days++;
+    }
+    return days;
+  };
+
+  // Variables
+  let daysOfEarliestYear = 365 - getDayoftheYear(dateArray);
+  let daysOfLatestYear = getDayoftheYear(todayDateArray);
+  let daysInbetween = (todayDateArray[2] - (dateArray[2] + 1)) * 365;
+  let totalDays = daysOfEarliestYear + daysOfLatestYear + daysInbetween;
+
+  // Calculation of days
+  totalDays = addLeapYearsForWholeYears(totalDays, dateArray, todayDateArray);
+  totalDays = addLeapYearsForNotWholeYears(
+    totalDays,
+    dateArray,
+    todayDateArray
+  );
+  return totalDays;
+};
+
+console.log(howManyDays("25.02.2012"));
 
 /* Ex.10
    Write a function called "isTodayMyBirthday" which should return true if today's your birthday, false otherwise.
 */
+
+newExercise("10");
+
+const myBirthday = [28, 6];
+const isTodayMyBirthday = function () {
+  if (
+    myBirthday[0] === todayDateArray[0] &&
+    myBirthday[1] === todayDateArray[1]
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+console.log(isTodayMyBirthday());
 
 // JS Arrays // Objs
 // NOTE: movies array is defined at the end of this file!
